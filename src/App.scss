@@ -1,0 +1,153 @@
+:root {
+  --bg-background: #111827;
+  --clr-card: #1f2937;
+  // --clr-1: #6420aa;
+  // --clr-2: #ff3ea5;
+  // --clr-3: #ff7ed4;
+  --red: #dc143c;
+  --blue: #335ede; // royalblue
+  --green: #3bb170;
+  --yellow: #f0cb00;
+  --orange: #ee8300;
+  --purple: #7f5ecb;
+  --black: #05131D;
+  --text-color: white;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--bg-background);
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 2rem;
+}
+
+
+.text-content {
+  padding: 0;
+  max-width: 800px;
+  text-align: left;
+
+  div, p {
+    display: block;
+    margin: 0 0 1rem;
+    font-size: 1em;
+    color: inherit;
+    font-family: inherit;
+  }
+}
+
+.single-brick {
+  --brick-color: var(--blue,royalblue);
+  --text-color: white;
+
+  display: block;
+  min-width: 10em;
+  width: auto;
+  min-height: 3.5em;
+  height: auto;
+  background: var(--brick-color, royalblue);
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  border-radius: 2px;
+  box-shadow: inset 0 -4px rgba(0, 0, 0, 0.1);
+  margin: 3rem 0 3rem;
+  position: relative;
+  color: var(--text-color, white);
+  padding: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 400;
+  letter-spacing: 0;
+
+  &::before, &::after, .inner {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 20%;
+    top: auto;
+    left: 10%;
+    right: 0;
+    bottom: 100%;
+    min-height:10px;
+    height: 15%;
+    max-height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+
+    // --lighten-color: rgba(118, 145, 226, 1);
+    --lighten-color: var(--brick-color, royalblue);
+    --lighten-color: color-mix(in srgb, var(--brick-color, royalblue) 80%, white 20%);
+    
+    background: linear-gradient(
+      90deg, 
+      var(--brick-color, royalblue) 0%, 
+      var(--lighten-color) 40%, 
+      var(--brick-color, royalblue) 50%, 
+      var(--lighten-color) 60%, 
+      var(--brick-color, royalblue) 100%
+    );
+  }
+
+  &::after {
+    left: 40%;
+  }
+
+  .inner{
+    left: 70%;
+  }
+}
+
+.lego-wrapper {
+  h2 {
+    color: white;
+    letter-spacing: 2px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.5em;
+    margin: 1rem 0 1rem;
+    text-shadow: 1px 1px 0 black, 
+    -1px -1px 0 black, 
+    1px -1px 0 black, 
+    -1px 1px 0 black;
+    line-height: 1.2;
+  }
+
+  &.fancy-text {
+    h2 {
+      text-shadow: 1px 1px 0 black, 
+                -1px -1px 0 black, 
+                1px -1px 0 black, 
+                -1px 1px 0 black, 
+                2px 2px 1px goldenrod,
+                -2px -2px 1px goldenrod,
+                2px -2px 1px goldenrod,
+                -2px 2px 1px goldenrod;
+    }
+  }
+}
+ 
+// adding color mapping on setting new class
+.single-brick.red {
+  --brick-color: var(--red, #dc143c);
+}
+
+.single-brick.green {
+  --brick-color: var(--green, green);
+  --text-color:var(--black);
+}
+
+.single-brick.yellow {
+  --brick-color: var(--yellow, #f0cb00);
+  --text-color: var(--black);
+}
