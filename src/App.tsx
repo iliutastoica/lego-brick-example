@@ -11,12 +11,34 @@ function App() {
     <div className="app-container">
       <h1>LEGO Brick Component</h1>
 
-      <LegoWrapper id="first-brick" />
+      <LegoWrapper id="first-brick" studCount={2} color={'orange'} pattern='standard' text='standard' />
+
+      <LegoWrapper id="first-brick" studCount={3} studShape={'round'} pattern='smooth' text='smooth' />
       
+      
+
+      <LegoWrapper
+        color={'red'}
+        fancyText={true}
+        title='A RED LEGO Brick Component'
+        id="example-brick-2"
+        />
+
       <LegoWrapper
         color={'purple'}
         fancyText={true}
-        title='LEGO Brick Component'
+        title='A PURPLE GRID Brick Component'
+        id="example-brick-2"
+        studCount={5}
+        pattern='grid'
+        />
+
+      <LegoWrapper
+        color={'blue'}
+        fancyText={true}
+        title='LEGO Round Brick Component'
+        studCount={4}
+        studShape={'round'}
         id="example-brick"
         text={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent aliquet lorem non sodales convallis. Nullam
             pharetra eros nibh, id interdum nunc rhoncus in. Fusce commodo urna dui, quis lobortis nisl varius sed. Ut
@@ -28,15 +50,9 @@ function App() {
       />
 
       <LegoWrapper
-        color={'red'}
-        fancyText={true}
-        title='A RED LEGO Brick Component'
-        id="example-brick-2"
-        />
-
-      <LegoWrapper
         color={'yellow'}
         fancyText={false}
+        studShape={'hexagon'}
         title='Yellow Component'
         id="example-brick-2"
         />
@@ -44,6 +60,8 @@ function App() {
       <LegoWrapper
         color={'green'}
         fancyText={false}
+        studCount={6}
+        studShape={'round'}
         title='A RED LEGO Brick Component'
         id="example-brick-2"
         >

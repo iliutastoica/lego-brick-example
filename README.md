@@ -1,7 +1,7 @@
 # LEGO Brick React Component
 
 ## Description
-A customizable React component that creates visually appealing LEGO-style brick elements. This component uses advanced CSS/SASS techniques to achieve an authentic LEGO brick appearance, complete with realistic lighting effects and customizable colors.
+A customizable React component that creates visually appealing LEGO-style brick elements. This component uses advanced CSS/SASS techniques to achieve an authentic LEGO brick appearance, complete with realistic lighting effects and customizable colors, studs, patterns, and text.
 
 ![LEGO Brick Component Preview](./public/preview.png)
 
@@ -10,6 +10,7 @@ A customizable React component that creates visually appealing LEGO-style brick 
 - TypeScript
 - Vite
 - SASS/SCSS
+- CSS Custom Properties: Houdini API
 
 ## Features
 - Authentic LEGO brick appearance with 3D effects
@@ -41,6 +42,18 @@ The component uses advanced CSS/SASS techniques to create the LEGO brick appeara
   id="example-brick"
   text="Your content here"
 />
+
+
+// Custom color, fancy text, dynamic stud count, and pattern
+<LegoWrapper
+  color="purple"
+  fancyText={true}
+  title="LEGO Brick Component"
+  id="example-brick"
+  text="Your content here"
+  studCount={5}
+  pattern='grid'
+/>
 ```
 
 ## Props
@@ -49,6 +62,10 @@ The component uses advanced CSS/SASS techniques to create the LEGO brick appeara
 - `title`: String - Sets the brick's title
 - `id`: String - Unique identifier for the brick
 - `text`: String - Content text for the brick
+- `studCount`: Number - Sets the number of studs on the brick
+- `studShape`: String - Sets the shape of the studs (e.g., 'round', 'square', 'hexagon')
+- `studDimensions`: Object - Sets the width and height of the studs (e.g., { width: 20, height: 15 })
+- `pattern`: String - Sets the brick's pattern (e.g., 'standard', 'smooth', 'grid')
 
 ## Development
 ```bash
