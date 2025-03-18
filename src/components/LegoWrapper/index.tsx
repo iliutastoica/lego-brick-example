@@ -88,16 +88,20 @@ const LegoWrapper: React.FC<LegoWrapperProps> = ({
   return (
     <>
       <div 
-        data-testid={id} 
-        className={`single-brick lego-wrapper ${pattern} ${color} ${fancyText ? 'fancy-text' : ''} ${studShape}-studs`}
+        data-testid={id}
+        data-brick={studCount}
+        className={`single-brick lego-wrapper ${pattern} ${color} ${fancyText ? 'fancy-text' : ''} ${studShape}-studs bricks-${studCount}`}
       >
         {renderStuds()}
-        <div className="lego-content">
-          {!!title && <h2>{title}</h2>}
-          <div className="text-content">
-            <>
-            {text || children}
-            </>
+        <div className="brick-content">
+          {/* <span className="brick-trapezoid" /> */}
+          <div className="lego-content">
+            {!!title && <h2>{title}</h2>}
+            <div className="text-content">
+              <>
+              {text || children}
+              </>
+            </div>
           </div>
         </div>
       </div>

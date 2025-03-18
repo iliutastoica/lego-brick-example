@@ -4,7 +4,7 @@
   --clr-1: #6420aa;
   --clr-2: #ff3ea5;
   --clr-3: #ff7ed4;
-  --red: #dc143c;
+  --red: #c42d00;
   --blue: #335ede; // royalblue
   --green: #3bb170;
   --yellow: #f0cb00;
@@ -67,83 +67,137 @@ body {
   }
 }
 
-.single-brick {
+.single-brick { // wrapper
   --brick-color: var(--blue,royalblue);
   --text-color: white;
   cursor: pointer;
-
   display: block;
   min-width: 10em;
   width: auto;
   min-height: 3.5em;
   height: auto;
-  background: var(--brick-color, royalblue);
-  border: 1px solid rgba(0, 0, 0, 0.6);
-  border-radius: 2px;
-  box-shadow: inset 0 -4px rgba(0, 0, 0, 0.1);
-  margin: 3rem 0 3rem;
   position: relative;
-  color: var(--text-color, white);
-  padding: 1rem;
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: 400;
-  letter-spacing: 0;
-  position: relative;
-  cursor: pointer;
+  background: none;
 
-  // adding animation
-  &::after,
-  &::before {
-    content: " ";
-    position: absolute;
-    z-index: -1;
-    inset: -0.5rem;
-    background: conic-gradient(
-      from var(--gradient-angle),
-      var(--clr-card),
-      var(--clr-1),
-      var(--clr-2),
-      var(--clr-3),
-      var(--clr-2),
-      var(--clr-1),
-      var(--clr-card)
-    );
-    border-radius: inherit;
-    animation: rotate 5s linear infinite;
-    transition: all 0.5s ease-in-out;
-    opacity: 0;
+  // adjusting margin top for 4+ studs
+  &.bricks-4 .brick-content {
+    margin-top: 5%;
+  }
+  &.bricks-5 .brick-content {
+    margin-top: 3.5%;
+  }
+  &.bricks-6 .brick-content {
+    margin-top: 5%;
   }
 
-  &::after {
-    opacity: 0;
-    filter: blur(3rem);
-  }
+  .brick-content {
+    display: block;
+    min-width: 10em;
+    width: auto;
+    min-height: 3.5em;
+    height: auto;
+    background: var(--brick-color, royalblue);
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    border-radius: 2px;
+    box-shadow: 
+      inset 0 -4px rgba(0, 0, 0, 0.2),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+    margin: 1.5rem 0 3rem;
+    position: relative;
+    color: var(--text-color, white);
+    padding: 1.5rem 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 400;
+    letter-spacing: 0;
+    cursor: pointer;
 
-  &:hover {
+    // adding animation
     &::after,
     &::before {
-      opacity: 0.5;
+      content: " ";
+      position: absolute;
+      z-index: -1;
+      inset: -0.5rem;
+      background: conic-gradient(
+        from var(--gradient-angle),
+        var(--clr-card),
+        var(--clr-1),
+        var(--clr-2),
+        var(--clr-3),
+        var(--clr-2),
+        var(--clr-1),
+        var(--clr-card)
+      );
+      border-radius: inherit;
+      animation: rotate 5s linear infinite;
+      transition: all 0.5s ease-in-out;
+      opacity: 0;
+    }
+
+    &::after {
+      opacity: 0;
+      filter: blur(3rem);
+    }
+
+    &:hover {
+      &::after,
+      &::before {
+        opacity: 0.5;
+      }
     }
   }
+
+  .brick-trapezoid {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    margin: 0;
+    height: 10%;
+    width: 100%;
+    min-height: 1rem;
+    max-height: 5rem;
+    background: var(--brick-color, royalblue);
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  
+    clip-path: polygon(10% 0, 90% 0, 100% 100%, 0% 100%);
+  }
+
+  
 
   .stud {
     display: block;
     position: absolute;
-    bottom: 100%;
+    top: 0;
+    bottom: auto;
     min-height: 15px;
-    border: 1px solid rgba(0, 0, 0, 0.6);
-    --lighten-color: color-mix(in srgb, var(--brick-color, royalblue) 80%, white 20%);
-    background: linear-gradient(
-      90deg, 
-      var(--brick-color, royalblue) 0%, 
-      var(--lighten-color) 40%, 
-      var(--brick-color, royalblue) 50%, 
-      var(--lighten-color) 60%, 
-      var(--brick-color, royalblue) 100%
+
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    --lighten-color: color-mix(in srgb, var(--brick-color, royalblue) 85%, white 15%);
+    background: radial-gradient(
+      circle at center top,
+      var(--lighten-color) 0%,
+      var(--brick-color, royalblue) 70%
     );
+    box-shadow: 
+      inset 0 2px 2px rgba(255, 255, 255, 0.3),
+      0 1px 2px rgba(0, 0, 0, 0.2);
 
     &.round {
       border-radius: 50% 50% 0 0;
+
+      border: 1px solid rgba(0, 0, 0, 0.6);
+      --lighten-color: color-mix(in srgb, var(--brick-color, royalblue) 80%, white 20%);
+      background: linear-gradient(
+        90deg, 
+        var(--brick-color, royalblue) 0%, 
+        var(--lighten-color) 40%, 
+        var(--brick-color, royalblue) 50%, 
+        var(--lighten-color) 60%, 
+        var(--brick-color, royalblue) 100%
+      );
     }
 
     &.square {
@@ -156,30 +210,40 @@ body {
   }
 
   &.grid {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-    background-size: 20px 20px;
-    box-shadow: none;
+    .brick-content {
+      background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+      box-shadow: none;
+    }
   }
 
   &.standard {
-    box-shadow: inset 0 -4px rgba(0, 0, 0, 0.1);
-    background-image: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.1),
-      rgba(0, 0, 0, 0.1)
-    );
-    
+    .brick-content {
+      box-shadow: inset 0 -4px rgba(0, 0, 0, 0.1);
+      background-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.1),
+        rgba(0, 0, 0, 0.1)
+      );
+    }
   }
 
   &.smooth {
-    box-shadow: none;
-    background-blend-mode: difference;
-    background-image: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.1),
-      rgba(0, 0, 0, 0.4)
-    );
+
+    .brick-content {
+      box-shadow: none;
+      background-blend-mode: difference;
+      background-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.1),
+        rgba(0, 0, 0, 0.4)
+      );
+
+      /* CORNERS */
+      clip-path: polygon(10px 0%, calc(100% - 10px) 0%, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0% calc(100% - 10px), 0% 10px);
+
+    }
   }
 }
 

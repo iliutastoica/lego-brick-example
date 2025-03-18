@@ -39,6 +39,7 @@ function App() {
         title='LEGO Round Brick Component'
         studCount={4}
         studShape={'round'}
+        pattern='smooth'
         id="example-brick"
         text={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent aliquet lorem non sodales convallis. Nullam
             pharetra eros nibh, id interdum nunc rhoncus in. Fusce commodo urna dui, quis lobortis nisl varius sed. Ut
@@ -53,6 +54,7 @@ function App() {
         color={'yellow'}
         fancyText={false}
         studShape={'hexagon'}
+        pattern='smooth'
         title='Yellow Component'
         id="example-brick-2"
         />
